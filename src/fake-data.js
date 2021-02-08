@@ -2,6 +2,7 @@ const shortid = require("shortid"); // shortid.generate() returns a unique "shor
 const txtgen = require("txtgen"); // txtgen.sentence() returns random "readable" sentences
 const faker = require("faker"); // faker is used for generating random fake data.
 const _ = require("lodash"); // lodash is a utility lib for Javascript
+const gravatar = require('gravatar');
 
 const users = generateUsers(10);
 export const contacts = _.mapKeys(users, "user_id");
@@ -31,7 +32,7 @@ export function generateUser() {
   return {
     name: faker.name.findName(),
     email: faker.internet.email(),
-    profile_pic: faker.internet.avatar(),
+    profile_pic: gravatar.url(faker.internet.email(), {s: '100', r: 'pg', d: 'mm'}),
     status: txtgen.sentence(),
     user_id: shortid.generate()
   };

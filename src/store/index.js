@@ -1,16 +1,9 @@
-import { contacts } from '../fake-data'
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import reducer  from '../reducers'
-
-
-const middleware = [thunk];
+import { createStore } from "redux";
+import reducers  from '../reducers/index'
 
 const store = createStore(
-  reducer,
-  {contacts},
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+  reducers, /* preloadedState, */
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ )
 
 export default store;

@@ -1,5 +1,14 @@
-const reducer =  (state, action) => {
-    return state
-}
+import {combineReducers} from 'redux';
+import contacts from './contacts'
+import user from './user';
+import activeUserId from './activeUserId';
+import messages from './messages';
+import typing from './typing';
 
-export default reducer;
+export default combineReducers({
+    contacts,
+    user,
+    activeUserId,
+    messages,
+    typing
+})
